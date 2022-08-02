@@ -1,15 +1,27 @@
-import './Shop.css'
+
+import ShopItem from './ShopItem/ShopItem';
+import { useEffect, useState } from 'react'
 
 function Shop() {
+    const [items, setItems] = useState([])
+
+    useEffect(
+        () => {
+            fetch('http://127.0.0.1:8000/items/')
+                .then(res => res.json())
+                .then(data => setItems(data))
+        }
+        , [])
+
     return (
         <section className="shop">
             <div className="shop-header">
                 <form className="shop-form">
-                    <input className="search-bar" type="text"/>
+                    <input className="search-bar" type="text" />
                     <button><i className="fa-solid fa-magnifying-glass"></i></button>
-                    
-                </form>   
-                
+
+                </form>
+
             </div>
             <div className="shop-content">
                 <aside className="shop-nav">
@@ -22,70 +34,10 @@ function Shop() {
                     </ul>
                 </aside>
                 <ul className="item-list">
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
-                    <li className="item-card">
-                        <img src="243V7QDSB_01-IMS-bg_BG.png" alt="img" />
-                        <div className="item-text">
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing</p>
-                            <span>$243</span>
-                        </div>
-                    </li>
+                    {items.map(item => <ShopItem item={item} key={item.id} />)}
+
                 </ul>
+                
             </div>
         </section>
     );
