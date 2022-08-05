@@ -1,27 +1,40 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleSubmit = e => {
-    e.preventDefault();
-    const username = e.target.username.value;
-    const password = e.target.password.value;
+    e.preventDefault(); 
     username.length > 0 && loginUser(username, password);
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <h1>Login </h1>
-        <hr />
-        <label htmlFor="username">Username</label>
-        <input type="text" id="username" placeholder="Enter Username" />
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" placeholder="Enter Password" />
-        <button type="submit">Login</button>
-      </form>
-    </section>
+    
+    <section className="register">
+            <article className="register-box">
+                <form onSubmit={handleSubmit} className="register-form">
+                    <h1 className="register-text">Login your account</h1>
+                    <input
+                        type="text"
+                        id="username"
+                        onChange={e => setUsername(e.target.value)}
+                        placeholder="Username"
+                        required
+                    />
+                    <input
+                        type="password"
+                        id="password"
+                        onChange={e => setPassword(e.target.value)}
+                        placeholder="Password"
+                        required
+                    />
+                    <button className="register-btn">Login</button>
+                </form>
+            </article>
+        </section>
   );
 };
 
