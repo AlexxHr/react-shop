@@ -1,4 +1,6 @@
 import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
+
 import AuthContext from "../../context/AuthContext";
 
 function Register() {
@@ -6,18 +8,19 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
-    const { registerUser } = useContext(AuthContext);
+    const { registerUser, user } = useContext(AuthContext);
 
     const handleSubmit = async e => {
         e.preventDefault();
         registerUser(username, email, password, password2);
     };
-    
+
     return (
-        <section className="register">
-            <article className="register-box">
-                <form onSubmit={handleSubmit} className="register-form">
-                    <h1 className="register-text">Register your account</h1>
+        !user ? 
+        <section className="auth">
+            <article className="auth-box">
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <h1 className="auth-text">Register your account</h1>
                     <input
                         type="text"
                         id="username"
@@ -47,10 +50,11 @@ function Register() {
                         required
                     />
                     <p>{password2 !== password ? "Passwords do not match" : ""}</p>
-                    <button className="register-btn">Register</button>
+                    <button className="auth-btn">Register</button>
                 </form>
             </article>
         </section>
+    : <Navigate to={'/'}/>    
     );
 }
 

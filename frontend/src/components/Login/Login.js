@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
+import { Navigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, user } = useContext(AuthContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,11 +13,11 @@ const Login = () => {
   };
 
   return (
-    
-    <section className="register">
-            <article className="register-box">
-                <form onSubmit={handleSubmit} className="register-form">
-                    <h1 className="register-text">Login your account</h1>
+    !user ? 
+    <section className="auth">
+            <article className="auth-box">
+                <form onSubmit={handleSubmit} className="auth-form">
+                    <h1 className="auth-text">Login your account</h1>
                     <input
                         type="text"
                         id="username"
@@ -31,10 +32,11 @@ const Login = () => {
                         placeholder="Password"
                         required
                     />
-                    <button className="register-btn">Login</button>
+                    <button className="auth-btn">Login</button>
                 </form>
             </article>
         </section>
+  : <Navigate to={'/'}/>
   );
 };
 
