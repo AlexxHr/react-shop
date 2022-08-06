@@ -4,20 +4,36 @@ import { useEffect, useState } from 'react'
 
 function Shop() {
     const [items, setItems] = useState([])
+    const [filterList, setFilterList] = useState([])
 
     useEffect(
         () => {
             fetch('http://127.0.0.1:8000/items/')
                 .then(res => res.json())
                 .then(data => setItems(data))
+            setFilterList(items)
         }
         , [])
+
+    useEffect(
+        () => {
+            setFilterList(items)
+        }
+        , [items])
+
+    function searchHandler(ev) {
+        if (ev.target.value == '') {
+            return setFilterList(items)
+        }
+        setFilterList(items.filter(item => item.title.toUpperCase().includes(ev.target.value.toUpperCase())))
+    } 
+    
 
     return (
         <section className="shop">
             <div className="shop-header">
                 <form className="shop-form">
-                    <input className="search-bar" type="text" />
+                    <input className="search-bar" onChange={searchHandler} type="text" />
                     <button><i className="fa-solid fa-magnifying-glass"></i></button>
 
                 </form>
@@ -37,7 +53,8 @@ function Shop() {
                     </ul>
                 </aside>
                 <ul className="item-list">
-                    {items.map(item => <ShopItem item={item} key={item.id} />)}
+                {filterList.map((item) => <ShopItem item={item} key={item.id} />)}
+                    {/* {items.map(item => <ShopItem item={item} key={item.id} />)} */}
 
                 </ul>
                 
