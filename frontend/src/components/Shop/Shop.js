@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 import ShopItem from './ShopItem/ShopItem';
 import { useEffect, useState } from 'react'
 
@@ -21,7 +21,10 @@ function Shop() {
                     <button><i className="fa-solid fa-magnifying-glass"></i></button>
 
                 </form>
-
+                <div>
+                <Link to="/create"><i class="fa-solid fa-plus shop-add"></i></Link>
+                
+                </div>
             </div>
             <div className="shop-content">
                 <aside className="shop-nav">

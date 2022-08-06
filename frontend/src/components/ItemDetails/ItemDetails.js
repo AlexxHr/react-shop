@@ -7,6 +7,7 @@ function ItemDetails() {
 
     useEffect(
         () => {
+            window.scrollTo(0, 0)
             fetch(`http://127.0.0.1:8000/items/${id}`)
                 .then(res => res.json())
                 .then(data => setItem(data))
