@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 // import Home from './components/Home/Home';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 import Shop from './components/Shop/Shop';
+import Create from './components/Create/Create';
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
@@ -26,6 +27,7 @@ function App() {
                     <Route path="/register" element={<Register/>} />
                     <Route path="/" element={<Home/>} />
                     <Route path="/shop" element={<Shop/>} />
+                    <Route path="/create" element={<Create/>} />
                     <Route path="/cart" element={<h1>TSET</h1>} />
                     <Route path='/item/:id' element={<ItemDetails/>}/>
                 </Routes>           

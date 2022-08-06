@@ -22,7 +22,7 @@ function Shop() {
 
                 </form>
                 <div>
-                <Link to="/create"><i class="fa-solid fa-plus shop-add"></i></Link>
+                <Link to="/create"><i className="fa-solid fa-plus shop-add"></i></Link>
                 
                 </div>
             </div>
