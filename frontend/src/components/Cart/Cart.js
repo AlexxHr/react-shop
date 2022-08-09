@@ -1,4 +1,5 @@
 import CartItem from "./CartItem/CartItem";
+import { Link } from 'react-router-dom'
 
 function Cart({cart, updateItem}) {  
     return (
@@ -11,7 +12,7 @@ function Cart({cart, updateItem}) {
                 <p className="item-info">Total price: <span>${cart.map(item => item.price * item.quantity).reduce((a, b) => a + b, 0)}</span></p>
                 <div className="checkout-buttons">
                     <button>Checkout</button>
-                    <button>Continue</button>
+                    <button><Link to='/shop'>Continue</Link></button>
                 </div>
                 
             </section>

@@ -58,16 +58,16 @@ function App() {
         localStorage.setItem('cart', cartString);
     }
     
-    const removeItem = (itemID) => {
-        let cartCopy = [...cart]
+    // const removeItem = (itemID) => {
+    //     let cartCopy = [...cart]
         
-        cartCopy = cartCopy.filter(item => item.ID != itemID);
+    //     cartCopy = cartCopy.filter(item => item.ID != itemID);
         
-        setCart(cartCopy);
+    //     setCart(cartCopy);
         
-        let cartString = JSON.stringify(cartCopy)
-        localStorage.setItem('cart', cartString)
-      }
+    //     let cartString = JSON.stringify(cartCopy)
+    //     localStorage.setItem('cart', cartString)
+    //   }
 
     useEffect(
         () => {
