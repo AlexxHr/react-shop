@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 
-function ItemDetails() {
+function ItemDetails({addToCart}) {
     const [ item, setItem ] = useState([])
     const { id } = useParams();
 
@@ -22,7 +22,7 @@ function ItemDetails() {
                     <p className="item-info">Price: <span>${item.price}</span></p>
                     <p className="item-info">Category: <span>{item.category}</span></p>
                     <p className="item-text">{item.description}</p>
-                    <div className="add-cart-btn"><button>Add to cart</button></div>
+                    <div className="add-cart-btn"><button onClick={() => addToCart(item)}>Add to cart</button></div>
                 </article>
             </section>
         </section>

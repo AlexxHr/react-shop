@@ -2,7 +2,7 @@ import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import { Link } from 'react-router-dom'
 
-function Header() {
+function Header({cart}) {
     const { user, logoutUser } = useContext(AuthContext);
 
     return (
@@ -36,7 +36,7 @@ function Header() {
                         </ul>
                     </li>
                     <li><i className="fa-solid fa-heart"></i></li>
-                    <li><i className="fa-solid fa-cart-shopping"></i></li>
+                    <li><Link to={'/cart'}><i className="fa-solid fa-cart-shopping"></i>{cart.length}</Link></li>
                 </ul>
             </nav>
         </header>
