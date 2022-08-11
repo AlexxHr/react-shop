@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
+import AuthContext from "../../context/AuthContext";
 import ShopItem from './ShopItem/ShopItem';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 
 function Shop() {
+    const { user } = useContext(AuthContext);
     const [items, setItems] = useState([])
     const [filterList, setFilterList] = useState([])
 
@@ -26,8 +28,8 @@ function Shop() {
             return setFilterList(items)
         }
         setFilterList(items.filter(item => item.title.toUpperCase().includes(ev.target.value.toUpperCase())))
-    } 
-    
+    }
+
 
     return (
         <section className="shop">
@@ -37,10 +39,12 @@ function Shop() {
                     <button><i className="fa-solid fa-magnifying-glass"></i></button>
 
                 </form>
-                <div>
-                <Link to="/create"><i className="fa-solid fa-plus shop-add"></i></Link>
-                
-                </div>
+                {user ?
+                    <div>
+                        <Link to="/create"><i className="fa-solid fa-plus shop-add"></i> Add Item</Link>
+                    </div>
+                    : null}
+
             </div>
             <div className="shop-content">
                 <aside className="shop-nav">
@@ -52,12 +56,13 @@ function Shop() {
                         <li>5</li>
                     </ul>
                 </aside>
-                <ul className="item-list">
-                {filterList.map((item) => <ShopItem item={item} key={item.id} />)}
-                    {/* {items.map(item => <ShopItem item={item} key={item.id} />)} */}
-
-                </ul>
-                
+                <div className="item-wrapper">
+                    <ul className="item-list">
+                        {filterList.length ?
+                            filterList.map((item) => <ShopItem item={item} key={item.id} />)
+                            : <h1 className='item-list-not-found'>No items</h1>}
+                    </ul>
+                </div>
             </div>
         </section>
     );

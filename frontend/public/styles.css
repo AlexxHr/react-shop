@@ -130,12 +130,12 @@
 }
 
 .shop-add {
-    border: 1px solid var(--dark);
+    border: 1px solid ;
     padding: 0.90rem;
     background-color: var(--light);
     color: var(--lighter);
+    border-radius: 10px;
 }
-
 
 .shop-form {
     width: 80%;
@@ -161,7 +161,7 @@
 
 .shop-nav {
     background-color: var(--white);
-    width: 12%;
+    width: 10vw;
     height: 50vh;
     border-radius: 10px;
     padding: 1rem;
@@ -191,13 +191,20 @@
 .img-wrapper {
     width: 50%;
     height: 650px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px; 
     
 }
 
 .img-wrapper img {
-   height: 100%;
-   width: 100%;
-   border-radius: 10px; 
+    height: auto; 
+    width: auto; 
+    max-width: 500px; 
+    max-height: 500px;
+   
 }
 
 .item-content {
@@ -240,14 +247,23 @@
     border-radius: 10px
 }
 
+.item-wrapper {
+    width: 70vw;
+    min-width: 70vw;
+}
 
 .item-list {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 
+}
+
+.item-list-not-found {
+    font-size: 2rem;
+    color: var(--dark);
 }
 
 .item-card {
@@ -261,7 +277,7 @@
 
 .item-text {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     padding: 1rem;
     color: var(--dark);
     font-size: 1.4rem;
@@ -270,7 +286,7 @@
 .item-card img {
     width: 100%;
     height: 80%;
-
+    
     border-radius: 10px;
 }
 

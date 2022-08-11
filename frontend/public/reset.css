@@ -8,6 +8,11 @@
 box-sizing: border-box;
 }
 
+a {
+	color: var(--dark);
+	text-decoration: none;
+}
+
 button, input[type="submit"], input[type="reset"] {
 	background: none;
 	color: inherit;
