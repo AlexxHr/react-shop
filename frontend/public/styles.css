@@ -188,9 +188,16 @@
     justify-content: space-between;
 }
 
-.item-details img {
+.img-wrapper {
     width: 50%;
-    border-radius: 10px;
+    height: 490px;
+    
+}
+
+.img-wrapper img {
+   height: 100%;
+   width: 100%;
+   border-radius: 10px; 
 }
 
 .item-content {
@@ -202,7 +209,7 @@
     padding: 2rem;
 }
 
-.item-content *:not(:last-child) {
+.item-content *:not(:last-child):not(:first-child) {
     border-bottom: 1px solid var(--light);
     margin-bottom: 2rem;
 }

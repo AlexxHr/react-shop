@@ -1,14 +1,11 @@
 import axios from "axios";
 import { useState, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 const Create = () => {
     const { user } = useContext(AuthContext);
-    const [title, setTitle] = useState("");
-    const [price, setPrice] = useState("");
-    const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    const navigate = useNavigate();
     const [category, setCategory] = useState('');
 
     const handleSubmit = async e => {
@@ -26,8 +23,7 @@ const Create = () => {
         };
         axios.post(url, form_data, config)
             .then(res => {
-                console.log(res.request.status);
-                console.log(res.data);
+                navigate('/shop')
             })
             .catch(err => console.log(err))
     };
@@ -42,7 +38,6 @@ const Create = () => {
                             type="text"
                             id="title"
                             name="title"
-                            onChange={e => setTitle(e.target.value)}
                             placeholder="Title"
                             required
                         />
@@ -50,7 +45,6 @@ const Create = () => {
                             type="number"
                             id="price"
                             name="price"
-                            onChange={e => setPrice(e.target.value)}
                             placeholder="Price"
                             required
                         />
@@ -66,7 +60,6 @@ const Create = () => {
                             type="text"
                             id="description"
                             name="description"
-                            onChange={e => setDescription(e.target.value)}
                             placeholder="Description"
                             required
                         />
@@ -75,7 +68,6 @@ const Create = () => {
                             id="image"
                             name="image"
                             accept="image/*"
-                            onChange={e => setImage(e.target.value)}
                             required
                         />
                         <button className="create-btn">Create</button>
