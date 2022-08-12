@@ -21,10 +21,13 @@ const Create = () => {
                 "Content-Type": "multipart/form-data",
             },
         };
-        const res = await axios.post(url, form_data, config)
-        const item = res.data
-        navigate(`/item/${item.id}`)
-            // .catch(err => console.log(err))
+        try {
+            const res = await axios.post(url, form_data, config)
+            const item = res.data
+            navigate(`/item/${item.id}`)
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     return (

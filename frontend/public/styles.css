@@ -210,6 +210,7 @@
 
 .item-content {
     position: relative;
+    
     width: 48%;
     background-color: var(--white);
     color: var(--dark);
@@ -277,7 +278,7 @@
 }
 
 .item-text {
-    display: flex;
+    overflow-wrap: break-word;
     justify-content: space-between;
     padding: 1rem;
     color: var(--dark);

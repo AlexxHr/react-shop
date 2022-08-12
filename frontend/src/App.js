@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom'
 
 import React, { useState, useEffect } from 'react';
 import { AuthProvider } from "./context/AuthContext";
-import PrivateRoute from "./utils/PrivateRoute";
 import Header from './components/Header/Header';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 import Shop from './components/Shop/Shop';
@@ -10,7 +9,6 @@ import Create from './components/Create/Create';
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register"
-import ProtectedPage from "./views/ProtectedPage";
 import Cart from './components/Cart/Cart';
 
 
@@ -81,9 +79,6 @@ function App() {
             <AuthProvider>
                 <Header cart={cart} />
                 <Routes>
-                    <Route path="/protected" element={<PrivateRoute />}>
-                        <Route path="/protected" element={<ProtectedPage />} />
-                    </Route>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/" element={<Home />} />
