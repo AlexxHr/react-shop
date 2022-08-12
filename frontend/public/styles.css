@@ -112,6 +112,7 @@
     align-items: center;
     background-color: var(--lighter);
     height: 100%;
+    min-height: 90vh;
 }
 
 .shop-content {

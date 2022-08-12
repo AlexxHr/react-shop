@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom'
 import AuthContext from "../../context/AuthContext";
 import ShopItem from './ShopItem/ShopItem';
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext} from 'react'
 
 function Shop() {
     const { user } = useContext(AuthContext);
     const [items, setItems] = useState([])
     const [filterList, setFilterList] = useState([])
+    const [categorySelected, setCategorySelected] = useState([])
 
     useEffect(
         () => {
@@ -23,19 +24,45 @@ function Shop() {
         }
         , [items])
 
-    function searchHandler(ev) {
-        if (ev.target.value == '') {
+    useEffect(() => {
+        console.log(categorySelected)
+        if (categorySelected.length <= 0) {
             return setFilterList(items)
         }
-        setFilterList(items.filter(item => item.title.toUpperCase().includes(ev.target.value.toUpperCase())))
+        const x = items.filter((item) => {
+            if (categorySelected.includes(item.category)) {
+                return item
+            }
+            })
+        setFilterList(x)
+    }, [categorySelected]);
+
+
+    const searchHandler = (e) => {
+        e.preventDefault()
+        if (e.target.search.value == '') {
+            return setFilterList(items)
+        }
+        setFilterList(items.filter(item => item.title.toUpperCase().includes(e.target.search.value.toUpperCase())))
     }
 
+    const onCategorySelect = (e) => {
+        const oldCategorySelected = [...categorySelected]
+
+        if (e.target.checked) {
+            oldCategorySelected.push(e.target.value)
+            setCategorySelected(oldCategorySelected)
+        } else {
+            setCategorySelected(oldCategorySelected.filter(item => item != e.target.value))
+        }     
+              
+    }
 
     return (
         <section className="shop">
             <div className="shop-header">
-                <form className="shop-form">
-                    <input className="search-bar" onChange={searchHandler} type="text" />
+                <form className="shop-form" onSubmit={searchHandler}>
+                    <input name="search" className="search-bar"  type="text" />
                     <button><i className="fa-solid fa-magnifying-glass"></i></button>
 
                 </form>
@@ -49,11 +76,14 @@ function Shop() {
             <div className="shop-content">
                 <aside className="shop-nav">
                     <ul className="shop-nav-filters">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
+                        <input type="checkbox" onChange={onCategorySelect} name="electronics" value="Electronics" />
+                        <label htmlFor="electronics">Electronics</label>
+                        <input type="checkbox" onChange={onCategorySelect} name="furniture" value="Furniture"/>
+                        <label htmlFor="furniture">Furniture</label>
+                        <input type="checkbox" onChange={onCategorySelect} name="clothing" value="Clothing"/>
+                        <label htmlFor="other">Clothing</label>
+                        <input type="checkbox" onChange={onCategorySelect} name="other" value="Other"/>
+                        <label htmlFor="other">Other</label>                 
                     </ul>
                 </aside>
                 <div className="item-wrapper">
