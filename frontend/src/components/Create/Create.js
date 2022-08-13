@@ -25,8 +25,8 @@ const Create = () => {
             const res = await axios.post(url, form_data, config)
             const item = res.data
             navigate(`/item/${item.id}`)
-        } catch (e) {
-            console.error(e);
+        } catch (e) {     
+            alert(e.request.response)
         }
     };
 
