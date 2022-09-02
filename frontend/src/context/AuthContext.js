@@ -8,6 +8,8 @@ const AuthContext = createContext();
 export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
+  const [errors, setErrors] = useState([])
+
   const [authTokens, setAuthTokens] = useState(() =>
     localStorage.getItem("authTokens")
       ? JSON.parse(localStorage.getItem("authTokens"))
@@ -34,6 +36,7 @@ export const AuthProvider = ({ children }) => {
       })
     });
     const data = await response.json();
+    
 
     if (response.status === 200) {
       setAuthTokens(data);
@@ -58,10 +61,13 @@ export const AuthProvider = ({ children }) => {
         password2
       })
     });
+
+    const data = await response.json();
+    
     if (response.status === 201) {
       navigate('/login');
     } else {
-      alert("Something went wrong!");
+      setErrors(data);
     }
   };
 
@@ -73,6 +79,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const contextData = {
+    errors,
     user,
     setUser,
     authTokens,

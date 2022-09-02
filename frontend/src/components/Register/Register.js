@@ -8,11 +8,12 @@ function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
-    const { registerUser, user } = useContext(AuthContext);
+    const { registerUser, user, errors } = useContext(AuthContext);
 
     const handleSubmit = async e => {
         e.preventDefault();
         registerUser(username, email, password, password2);
+        
     };
 
     return (
@@ -28,6 +29,7 @@ function Register() {
                         placeholder="Username"
                         required
                     />
+                    {errors.username}
                     <input
                         type="text"
                         id="email"
@@ -35,6 +37,7 @@ function Register() {
                         placeholder="Email"
                         required
                     />
+                    {errors.email}
                     <input
                         type="password"
                         id="password"
@@ -49,6 +52,7 @@ function Register() {
                         placeholder="Confirm Password"
                         required
                     />
+                    {errors.password}
                     <p>{password2 !== password ? "Passwords do not match" : ""}</p>
                     <button className="auth-btn">Register</button>
                 </form>
