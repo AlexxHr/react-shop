@@ -15,7 +15,7 @@ E-commerce app built with ReactJS for frontend and Django Rest Framework for bac
 - Type the following command to clone project in same directory.
 
 ```bash
-git clone https://github.com/sushil-kamble/react-shop.git .
+git clone https://github.com/AlexxHr/react-shop.git .
 ```
 
 ## Backend
