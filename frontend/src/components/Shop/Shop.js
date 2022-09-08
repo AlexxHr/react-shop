@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import AuthContext from "../../context/AuthContext";
 import ShopItem from './ShopItem/ShopItem';
 import { useEffect, useState, useContext} from 'react'
+import './Shop.css'
 
 function Shop() {
     const { user } = useContext(AuthContext);

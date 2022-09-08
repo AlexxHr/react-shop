@@ -1,6 +1,7 @@
 import AuthContext from "../../context/AuthContext";
 import { useContext } from "react";
 import { Link } from 'react-router-dom'
+import './Header.css'
 
 function Header({cart}) {
     const { user, logoutUser } = useContext(AuthContext);

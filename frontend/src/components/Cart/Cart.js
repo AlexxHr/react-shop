@@ -1,5 +1,6 @@
 import CartItem from "./CartItem/CartItem";
 import { Link } from 'react-router-dom'
+import './Cart.css'
 
 function Cart({cart, updateItem}) {  
     return (

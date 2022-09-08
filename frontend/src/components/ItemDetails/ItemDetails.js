@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import AuthContext from "../../context/AuthContext";
 import DeleteDialog from './DeleteDialog'
 import EditDialog from './EditDialog'
+import './ItemDetails.css'
 
 function ItemDetails({ addToCart }) {
     const { user } = useContext(AuthContext);
@@ -72,7 +73,7 @@ function ItemDetails({ addToCart }) {
                         <img src={item.image} alt="img" />
                     </div>
                     <article className="item-content">
-                        {user.user_id == item.user ?
+                        {user && user.user_id == item.user ?
                             <div>
                                 <button onClick={onDelete}>Delete</button>
                                 <button onClick={onEdit}>Edit</button>

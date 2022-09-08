@@ -1,0 +1,28 @@
+.home {
+    background-color: var(--lighter);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.home-title {
+    font-size: 6rem;
+    color: var(--dark)
+}
+
+.home-subtitle {
+    font-size: 2rem;
+    color: var(--light)
+}
+
+.home-subtitle a {
+    text-decoration: none;
+    color: var(--dark)
+}
+
+.home-subtitle a:hover {
+    text-decoration: underline;
+}

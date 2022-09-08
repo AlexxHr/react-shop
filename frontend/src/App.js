@@ -7,8 +7,8 @@ import ItemDetails from './components/ItemDetails/ItemDetails';
 import Shop from './components/Shop/Shop';
 import Create from './components/Create/Create';
 import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register"
+import Login from "./components/Auth/Login";
+import Register from "./components/Auth/Register"
 import Cart from './components/Cart/Cart';
 
 
